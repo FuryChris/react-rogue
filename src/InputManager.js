@@ -1,15 +1,15 @@
 class InputManager {
     observers = []; // patent for event management
 
-    subscribe(fn){
+    subscribe(fn) {
         this.observers.push(fn);
     }
-    
-    unsubscribe(fn){
-        this.observers = this.observers.filter( subscriber => subscriber !== fn);
+
+    unsubscribe(fn) {
+        this.observers = this.observers.filter(subscriber => subscriber !== fn);
     }
 
-    broadcast(action, data){
+    broadcast(action, data) {
         this.observers.forEach(subscriber => subscriber(action, data));
     }
 
@@ -17,17 +17,17 @@ class InputManager {
         e.preventDefault();
         switch (e.keyCode) {
             case 37: //left arrow key
-                this.broadcast('move', {x:-1, y:0})
+                this.broadcast('move', { x: -1, y: 0 })
                 break;
 
             case 38: //up arrow key
-                this.broadcast('move', {x:0, y:-1})
+                this.broadcast('move', { x: 0, y: -1 })
                 break;
             case 39: //right arrow key
-                this.broadcast('move', {x:1, y:0})
+                this.broadcast('move', { x: 1, y: 0 })
                 break;
             case 40: //down arrow key
-                this.broadcast('move', {x:0, y:1})
+                this.broadcast('move', { x: 0, y: 1 })
                 break;
             default:
                 break;
